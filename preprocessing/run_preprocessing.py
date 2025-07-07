@@ -5,9 +5,10 @@ import pandas as pd
 import cv2
 from crop_center import crop_and_resize
 from upsampling import upsample_images
+from enhancement import illumination_correction  # 🚨 ADICIONADO
 
 # Caminhos
-RAW_IMAGE_DIR = "data/RFMiD/images/Training"
+RAW_IMAGE_DIR = "data/RFMiD/images/Training"  # 🚨 Corrigido para 'Training'
 LABEL_CSV = "data/RFMiD/Training_Labels.csv"
 PROCESSED_DIR = "data/RFMiD/train_preprocessed"
 
@@ -28,7 +29,7 @@ def main():
 
     print("✂️  Cortando e redimensionando imagens...")
     for idx, row in df.iterrows():
-        img_name = str(row["ID"]) + ".png"
+        img_name = str(row["ID"]) + ".png"  # 🚨 Corrigido para .png
         img_path = os.path.join(RAW_IMAGE_DIR, img_name)
 
         if not os.path.exists(img_path):
@@ -36,6 +37,8 @@ def main():
             continue
 
         img_out = crop_and_resize(img_path, TARGET_SIZE)
+        img_out = illumination_correction(img_out)  # 🚨 Aplicação da correção
+
         salvar_imagem_saida(img_out, img_name)
 
         if idx % 100 == 0:
