@@ -2,6 +2,8 @@
 
 Este projeto implementa o modelo **Query2Label** para diagnóstico automático de **29 patologias oculares** com o dataset **RFMiD**. A arquitetura é baseada em **Transformers** e permite **multi-rótulo** em imagens de retina.
 
+
+Onde baixar o dataset: https://riadd.grand-challenge.org/download-all-classes/
 ---
 
 ## 📦 Estrutura do Projeto
